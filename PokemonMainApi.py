@@ -167,7 +167,7 @@ while flag==0:
         in_data_base = utilities.is_in_data_base(random_pokemon) #check if the random pokemon already in database it True it will print the details with relevant message
         
         if in_data_base == False:#if random poke not already in database do the next steps 
-            Name,Height,Weight = GetApi.get_pokemon_details(random_pokemon)#get pokemon details info
+            Name,Height,Weight = get_api.get_pokemon_details(random_pokemon)#get pokemon details info
             utilities.add_pokemon(Name,Height,Weight)#store json pokemon info details in file name 'PokemonDB.json'
             utilities.display(Name,Height,Weight)#display pokemon details info
             
