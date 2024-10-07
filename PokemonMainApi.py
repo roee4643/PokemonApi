@@ -4,13 +4,6 @@ import json
 import os
 
 
-class Pokemons():
-    pass
-    
-    
-  
-
-
 class GetApi():
     
     
@@ -149,7 +142,6 @@ class Utilities():
 ###main testing##
         
 #define class variables
-#pokemon = Pokemons()
 get_api = GetApi()
 utilities = Utilities()
 
@@ -158,9 +150,11 @@ flag = 0
 #get pokemons name list by api and store in pokemon_list
 pokemon_list = get_api.pokemon_list()#get pokemon list
 
-print("Welcome to the pokemon generator!")
+print("----Welcome to the pokemon generator!-----")
 while flag==0:
-    ans = input("do you want to generate new pokemon? (y/n): ")
+    print("\n")
+    print("-----------------------------------")
+    ans = input("Do you want to generate new pokemon? (y/n): ")
     if ans == 'y':
         
         random_pokemon = get_api.Get_random_pokemon(pokemon_list) #get random pokemon from the pokemon list
@@ -168,8 +162,9 @@ while flag==0:
         
         if in_data_base == False:#if random poke not already in database do the next steps 
             Name,Height,Weight = get_api.get_pokemon_details(random_pokemon)#get pokemon details info
-            utilities.add_pokemon(Name,Height,Weight)#store json pokemon info details in file name 'PokemonDB.json'
+            
             utilities.display(Name,Height,Weight)#display pokemon details info
+            utilities.add_pokemon(Name,Height,Weight)#store json pokemon info details in file name 'PokemonDB.json'
             
     elif ans == 'n':
         print("See you next time :)")
