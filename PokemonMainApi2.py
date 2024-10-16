@@ -75,14 +75,12 @@ class Utilities():
 	    	'Height': int(height)   #inserting the value of height into created attribute called "Height"
 	     }
     	)
-
-	if response['ResponseMetadata']['HTTPStatusCode'] == 200: #A status code of 200 indicates that the operation was successful.
-		print("Item added successfully!")
-	else:
-		print("Error adding item.")
-
-              
-        
+    	
+    	if response['ResponseMetadata']['HTTPStatusCode'] == 200: #A status code of 200 indicates that the operation was successful.
+    		print("Item added successfully!")
+    	else:
+    		print("Error adding item.")
+	    
     # Function that responsible of displaying results of pokemon information 
     def display(self,name, height, weight):#gets the pokemons info 
         self.name = name #store the pokemons name at self.name
