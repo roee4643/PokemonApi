@@ -25,9 +25,9 @@ sudo /usr/bin/python3 -m pip install --upgrade pip
 pip3 install boto3
 
 # Add the AWS credentials as environment variables to the profile
-echo "export AWS_ACCESS_KEY_ID=" >> /etc/profile
-echo "export AWS_SECRET_ACCESS_KEY=" >> /etc/profile
-echo "export AWS_SESSION_TOKEN=" >> /etc/profile
+echo "export AWS_ACCESS_KEY_ID= {AWS_ACCESS_KEY_ID} " >> /etc/profile
+echo "export AWS_SECRET_ACCESS_KEY= {AWS_SECRET_ACCESS_KEY} " >> /etc/profile
+echo "export AWS_SESSION_TOKEN= {AWS_SESSION_TOKEN}">> /etc/profile
 echo "export AWS_DEFAULT_REGION=us-west-2" >> /etc/profile
 
 # Apply the changes
