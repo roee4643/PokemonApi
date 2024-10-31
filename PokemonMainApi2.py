@@ -3,6 +3,7 @@ import random
 import json
 import os
 import boto3
+from pokemon_api import GetApi  # Import the GetApi class from pokemon_api.py
 
             
 
