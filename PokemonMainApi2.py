@@ -4,56 +4,7 @@ import json
 import os
 import boto3
 
-class GetApi():
-    
-    
-    #function that responsible of get pokemon name list
-    def pokemon_list(self):
-        # Fetching  all pokemons data from the Pokémon API
-        response = requests.get('https://pokeapi.co/api/v2/pokemon?limit=50')
-        if response.status_code == 200:# Check if the request was successful
-            data = response.json() #store the information of pokemons into data
-            pokemon_dict = {i + 1: pokemon['name'] for i, pokemon in enumerate(data['results'])} #use for loop to store all pokemons names into a list
-            return pokemon_dict #return pokemons name list
-        
-        else:
-            return print("Failed to retrieve data")
-        
-
-    #function that responsible of geting random pokemon name from the list
-    def Get_random_pokemon(self,pokemon_dict):
-        self.pokemon_dict=pokemon_dict
-        random_pokemon = random.choice(list(pokemon_dict.values())) #pick random choice from the pokemon name list
-        return random_pokemon #return the random pokemon name
-    
-    #function that responsible of displaying the pokemon details
-    def get_pokemon_details(self,random_pokemon):
-        self.random_pokemon = random_pokemon
-        try:  
-            response = requests.get(f'https://pokeapi.co/api/v2/pokemon/{self.random_pokemon}/')
             
-            # Check if the request was successful
-            if response.status_code == 200:
-                self.pokemon_details = response.json() #store the response from API to self.pokemon_details
-                
-                #create variable that will present the relevant values from the details list and will be well presented
-                Name =self.pokemon_details['name']
-                Height=self.pokemon_details['height']
-                Weight= self.pokemon_details['weight']
-                
-                 
-                return Name,Height,Weight
-            
-            else:# if the request was unsuccessful print error
-                return print("Failed to retrieve data")
-            
-        except requests.exceptions.HTTPError as http_err:
-            print(f"HTTP error occurred: {http_err}")
-        except requests.exceptions.RequestException as err:
-            print(f"Error occurred: {err}")
-        
-        
-    
 
 class Utilities():
     
