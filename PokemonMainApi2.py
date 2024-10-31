@@ -4,75 +4,8 @@ import json
 import os
 import boto3
 from pokemon_api import GetApi  # Import the GetApi class from pokemon_api.py
-
+from pokemon_utilities import Utilities  # Import the Utilities class
             
-
-class Utilities():
-    
-    #ets up an instance of the class with a filename (defaulting to 'PokemonDB.json') and an empty dictionary for storing Pokémon details
-    def __init__(self, filename='PokemonDB.json'):
-        self.dynamodb = boto3.resource('dynamodb') #This line initializes a DynamoDB resource using Boto3.
-        self.table = self.dynamodb.Table('Pokemon') #This line retrieves a specific DynamoDB table named Pokemon
-     
-     
-           
-    #Function that responsible of inserting the pokemon details into dynamodb database
-    def insert_pokemon(self,pokemon_name, weight, height):
-    	
-    	# Insert a new item
-    	response = self.table.put_item( # used to create a new item in the table or replace an existing item
-	    Item={
-	    	'PokemonName': str(pokemon_name),  # Primary key
-	    	'Weight': int(weight) , #inserting the value of weight into created attribute called "Weight"
-	    	'Height': int(height)   #inserting the value of height into created attribute called "Height"
-	     }
-    	)
-    	
-    	if response['ResponseMetadata']['HTTPStatusCode'] == 200: #A status code of 200 indicates that the operation was successful.
-    		print("Item added successfully!")
-    	else:
-    		print("Error adding item.")
-	    
-    # Function that responsible of displaying results of pokemon information 
-    def display(self,name, height, weight):#gets the pokemons info 
-        self.name = name #store the pokemons name at self.name
-        self.height = height #store the pokemons height at self.height
-        self.weight = weight #store the pokemons weight at self.weight
-        
-        #variable that stores all the pokemon info with string
-        self.poke_info=print(f"The pokemon is: {self.name}\nweights: {self.weight} \nheights is: {self.height}")
-        
-        if self.name is None: #if self.poke_info has no value print error
-            #print("No Pokémon details available.")
-            return print("No Pokémon name available.")
-        
-        if self.height is None: #if self.poke_info has no value print error
-            #print("No Pokémon details available.")
-            return print("No Pokémon height available.")
-    
-        if self.weight is None: #if self.poke_info has no value print error
-            
-            #print("No Pokémon details available.")
-            return print("No Pokémon weight available.")
-    
-    ##function that responsible of checking if the random pokemon information already in dynamodb Database 
-    def is_in_data_base(self,pokemon_name):
-    
-    	# Retrieve the item by Pokémon name
-    	response = self.table.get_item(Key={'PokemonName': pokemon_name})
-
-    	# Check if the item exists
-    	if 'Item' in response: #This line checks if the key 'Item' is present in the response dictionary (if pokemon_name is in database as a key that have details).
-    		weight = response['Item']['Weight']
-    		height = response['Item']['Height']
-    		print(f"pokemon named: {pokemon_name} is already in the database")
-    		print(f"Height: {height}")  # You can specify the unit if known
-    		print(f"Weight: {weight}")
-	    	return True #Pokémon exists
-		
-    	else:
-	    	return False #Pokémon does not exist
-         
 
 
 
