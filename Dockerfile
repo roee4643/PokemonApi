@@ -16,5 +16,7 @@ EXPOSE 80
 # Copy the rest of the application code into the container
 COPY . .
 
-CMD ["python","create_databaseDynamo.py",  "PokemonMainApi2.py"]
-# Define the command to run your app
+RUN chmod +x start_app.sh
+
+
+CMD ["./start_app.sh"]
