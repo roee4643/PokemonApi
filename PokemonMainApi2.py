@@ -3,8 +3,8 @@ import random
 import json
 import os
 import boto3
-from pokemon_api import GetApi  # Import the GetApi class from pokemon_api.py
-from pokemon_utilities import Utilities  # Import the Utilities class
+from  Pokemon_GetApi_Class import GetApi  # Import the GetApi class from pokemon_api.py
+from Pokemon_Utilities_Class import Utilities  # Import the Utilities class
             
 
 
