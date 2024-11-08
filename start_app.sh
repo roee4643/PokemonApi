@@ -1,5 +1,5 @@
+#! /bin/bash
 
-#!/bin/bash
 # start_app.sh
 
 # Run the script to create the DynamoDB database
