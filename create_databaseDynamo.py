@@ -1,5 +1,5 @@
 import boto3
-
+from botocore.exceptions import ClientError
 
 def create_table():
     dynamodb = boto3.resource('dynamodb')
